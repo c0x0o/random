@@ -3,7 +3,7 @@ var process = require('process');
 
 function cmdParser(argv) {
     var argv = Array.prototype.slice.call(process.argv, 2);
-    var group = argv.join(' ').match(/\-[a-zA-Z]+[^\-]?/gi);
+    var group = argv.join(' ').match(/\-[a-zA-Z]+[^\-]{0,}/gi);
     var ret = {};
 
     group && group.forEach(function(pair, i) {
@@ -40,7 +40,7 @@ function main() {
         value = options[option] ? options[option] : null;
         switch(option) {
             case 'b':
-                n = value ? value : 100;
+                n = value ? parseInt(value) : 100;
                 break;
             case 'n':
                 type = 'number';
@@ -79,7 +79,7 @@ function main() {
         sequence += generator();
     }
 
-    console.log(sequence);
+    process.stdout.write(sequence);
 
     return sequence;
 }

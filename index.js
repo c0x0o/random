@@ -31,7 +31,7 @@ function print_usage() {
 }
 
 function main() {
-    var options = cmdParser(process.argv);console.log(options);
+    var options = cmdParser(process.argv);
 
     var n = 1, delimiter = ' ', type = 'string', min = 0, max = 100;
     var generator = null;
